@@ -1,322 +1,749 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html manifest="css.manifest">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PS4 5.0 - 13.52 FW GoldHEN by Ahmad Sirbel (ADAM Center)</title>
+    <title>PS4 5.0 - 13.52 FW GoldHEN by Ahmad Sirbel (ADAM Center)</title>
 
-  <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        /* ===== PREMIUM GOLDHEN PAGE DESIGN ===== */
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .page-heading {
+            text-align: center;
+            padding: 25px 15px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .page-heading h1 {
+            font-size: 29px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #ffe29a;
+            text-shadow:
+                0 0 8px rgba(255, 193, 64, 0.45),
+                0 0 22px rgba(255, 170, 0, 0.2);
+            line-height: 1.5;
+        }
+
+        .page-heading hr {
+            max-width: 850px;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #b99552,
+                #ffe29a,
+                #b99552,
+                transparent
+            );
+            margin: 20px auto;
+        }
+
+        /* ===== ANIMATED LOADING PANEL ===== */
+
+        .goldhen-loading {
+            position: relative;
+            width: calc(100% - 30px);
+            max-width: 760px;
+            margin: 35px auto 0;
+            padding: 30px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #191919, #25241f, #111111);
+            border: 1px solid rgba(215, 181, 109, 0.45);
+            border-radius: 18px;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 22px rgba(215, 181, 109, 0.08);
+            overflow: hidden;
+        }
+
+        .goldhen-loading::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 70%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #ffe29a,
+                #ffffff,
+                #d4af65,
+                transparent
+            );
+            animation: loading-sweep 3s ease-in-out infinite;
+        }
+
+        #msgs {
+            position: relative;
+            margin: 0;
+            color: #ffe29a;
+            font-size: 27px;
+            font-weight: 800;
+            line-height: 1.6;
+            overflow-wrap: anywhere;
+            text-shadow:
+                0 0 8px rgba(255, 193, 64, 0.25),
+                0 0 20px rgba(255, 170, 0, 0.12);
+            animation: loading-glow 2.5s ease-in-out infinite;
+        }
+
+        .loading-decoration {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin: 20px auto 0;
+        }
+
+        .loading-decoration span {
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d4af65;
+            box-shadow: 0 0 10px rgba(255, 193, 64, 0.4);
+            animation: loading-dots 1.2s ease-in-out infinite;
+        }
+
+        .loading-decoration span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-decoration span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .loading-caption {
+            margin-top: 16px;
+            color: #a9a9a9;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        @keyframes loading-glow {
+            0%, 100% {
+                text-shadow:
+                    0 0 8px rgba(255, 193, 64, 0.2),
+                    0 0 20px rgba(255, 170, 0, 0.1);
+            }
+
+            50% {
+                text-shadow:
+                    0 0 12px rgba(255, 193, 64, 0.5),
+                    0 0 28px rgba(255, 170, 0, 0.22);
+            }
+        }
+
+        @keyframes loading-dots {
+            0%, 80%, 100% {
+                opacity: 0.35;
+                transform: scale(0.75);
+            }
+
+            40% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes loading-sweep {
+            0% {
+                left: -100%;
+            }
+
+            60%, 100% {
+                left: 140%;
+            }
+        }
+
+        /* ===== PREMIUM DESIGN CREDITS ===== */
+
+        .design-credits {
+            width: 100%;
+            margin: 55px 0 35px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            direction: ltr;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .design-credits * {
+            box-sizing: border-box;
+        }
+
+        .credits-header {
+            width: 100%;
+            max-width: 480px;
+            text-align: right;
+            margin: 0 0 20px;
+        }
+
+        .credits-header .eyebrow {
+            color: #d4af65;
+            font-size: 11px;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        .credits-header h2 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .credits-header .gold-line {
+            width: 60px;
+            height: 3px;
+            margin: 13px 0 0 auto;
+            background: linear-gradient(90deg, #a77a30, #ffe4a1);
+            border-radius: 10px;
+        }
+
+        .credit-card {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 0 18px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #191919, #252525);
+            border: 1px solid #393939;
+            border-radius: 13px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-3px);
+            border-color: #b99552;
+        }
+
+        .credit-person {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .person-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #42351e, #171717);
+            border: 1px solid #8f713d;
+            color: #e8c982;
+            font-size: 19px;
+        }
+
+        .person-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .person-info h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 5px;
+        }
+
+        .person-info p {
+            font-size: 10px;
+            color: #d4af65;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 7px;
+        }
+
+        .social-link {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 10px 5px;
+            border-radius: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            background: #303030;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .social-link .social-icon {
+            width: 29px;
+            height: 29px;
+            min-width: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: #ffffff;
+        }
+
+        .social-icon svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+        }
+
+        .facebook .social-icon {
+            background: #1877F2;
+        }
+
+        .instagram .social-icon {
+            background: linear-gradient(
+                45deg,
+                #feda75,
+                #fa7e1e,
+                #d62976,
+                #962fbf,
+                #4f5bd5
+            );
+        }
+
+        .whatsapp .social-icon {
+            background: #25D366;
+        }
+
+        .facebook:hover {
+            background: #18365a;
+        }
+
+        .instagram:hover {
+            background: #49263e;
+        }
+
+        .whatsapp:hover {
+            background: #174a32;
+        }
+
+        .social-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .social-text strong {
+            font-size: 9px;
+            font-weight: 500;
+            color: #bcbcbc;
+        }
+
+        .social-text span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            overflow-wrap: anywhere;
+        }
+
+        .credits-footer {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            color: #929292;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .credits-footer span {
+            color: #d4af65;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+
+        @media (max-width: 520px) {
+            .page-heading h1 {
+                font-size: 23px;
+            }
+
+            .goldhen-loading {
+                padding: 24px 12px;
+                margin-top: 25px;
+            }
+
+            #msgs {
+                font-size: 21px;
+            }
+
+            .loading-caption {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            .design-credits {
+                padding: 0 12px;
+                margin-top: 35px;
+            }
+
+            .credit-card {
+                max-width: 100%;
+                padding: 12px;
+            }
+
+            .credits-header h2 {
+                font-size: 26px;
+            }
+
+            .person-info h3 {
+                font-size: 17px;
+            }
+
+            .social-links {
+                gap: 5px;
+            }
+
+            .social-link {
+                padding: 9px 3px;
+            }
+
+            .social-text strong {
+                font-size: 8px;
+            }
+
+            .social-text span {
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #msgs,
+            .goldhen-loading::before,
+            .loading-decoration span {
+                animation: none;
+            }
+
+            .credit-card,
+            .social-link {
+                transition: none;
+            }
+        }
+    </style>
+
+    <!-- ===== ORIGINAL FIRMWARE / CACHE / GOLDHEN LOGIC ===== -->
+    <script>
+        var uaFull = navigator.userAgent;
+        var match = uaFull.match(/PlayStation 4[ /]\([\d.]+)/i);
+        var isPS4 = match !== null;
+        var fwVersion = isPS4 ? match[1] : "Unknown";
+        var fwNum = parseFloat(fwVersion);
+
+        function onScriptError() {
+            var msg = document.getElementById("msgs");
+
+            if (msg) {
+                msg.innerHTML =
+                    "Content not Found! - Clear Browser Data and Re-Install Cache ...";
+            }
+        }
+
+        if (!isPS4) {
+            document.addEventListener("DOMContentLoaded", function () {
+                var msg = document.getElementById("msgs");
+
+                if (msg) {
+                    msg.textContent =
+                        "Only for PS4 with Firmware 5.05 to 13.52";
+                }
+            });
+        } else {
+            if (window.applicationCache.status == 0) {
+                if (fwNum == 5.05 || fwNum == 5.07) {
+                    location.replace("cache505.html");
+                } else if (fwNum >= 7.00 && fwNum <= 8.52) {
+                    location.replace("cache700.html");
+                } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                    location.replace("cache900.html");
+                } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                    location.replace("cachecss.html");
+                } else if (fwNum >= 11.50 && fwNum <= 13.52) {
+                    location.replace("cacheslopkit.html");
+                } else {
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var msg = document.getElementById("msgs");
+
+                        if (msg) {
+                            msg.innerHTML =
+                                'Unsupported Firmware: <span style="color:red;">' +
+                                fwVersion +
+                                "</span>";
+                        }
+                    });
+                }
+            } else {
+                if (fwNum == 5.05 || fwNum == 5.07) {
+                    var script = document.createElement("script");
+                    script.src = "505/exploit.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+
+                } else if (fwNum >= 7.00 && fwNum <= 8.52) {
+                    var script = document.createElement("script");
+                    script.type = "module";
+                    script.src = "700/alert.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+
+                } else if (fwNum >= 9.00 && fwNum <= 9.60) {
+                    var script = document.createElement("script");
+                    script.type = "module";
+                    script.src = "900/alert.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+
+                } else if (fwNum >= 10.00 && fwNum <= 11.02) {
+                    var script = document.createElement("script");
+                    script.src = "css/main.js";
+                    script.onerror = onScriptError;
+
+                    script.onload = function () {
+                        setTimeout(function () {
+                            doJb();
+                        }, 500);
+                    };
+
+                    document.head.appendChild(script);
+
+                } else if (fwNum >= 11.50 && fwNum <= 12.02) {
+                    var script = document.createElement("script");
+                    script.type = "module";
+                    script.src = "slopkit/chain_lapse.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+
+                } else if (fwNum >= 12.50 && fwNum <= 13.00) {
+                    var script = document.createElement("script");
+                    script.type = "module";
+                    script.src = "slopkit/chain_poops.js";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+
+                } else if (fwNum >= 13.02 && fwNum <= 13.52) {
+                    var script = document.createElement("script");
+                    script.type = "module";
+                    script.src = "slopkit/jb.js?v=19";
+                    script.onerror = onScriptError;
+                    document.head.appendChild(script);
+
+                } else {
+                    document.addEventListener("DOMContentLoaded", function () {
+                        var msg = document.getElementById("msgs");
+
+                        if (msg) {
+                            msg.innerHTML =
+                                'Unsupported Firmware: <span style="color:red;">' +
+                                fwVersion +
+                                "</span>";
+                        }
+                    });
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
 
-<script>
-var uaFull = navigator.userAgent;
-var match = uaFull.match(/PlayStation 4[ /]([\d.]+)/i);
-var isPS4 = match !== null;
-var fwVersion = isPS4 ? match[1] : "Unknown";
-var fwNum = parseFloat(fwVersion);
+    <!-- PAGE TITLE -->
+    <div class="page-heading">
+        <h1>PS4 5.0 - 13.52 FW GoldHEN</h1>
+        <hr>
+    </div>
 
-function onScriptError() {
-    var msg = document.getElementById("msgs");
-    if (msg) {
-        msg.innerHTML =
-          "Content not Found! - Clear Browser Data and Re-Install Cache ...";
-    }
-}
+    <!-- LOADING MESSAGE -->
+    <div class="goldhen-loading">
+        <h1 id="msgs">Loading GoldHEN v2.4b18.12... Please Wait</h1>
 
-if (!isPS4) {
-    document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("msgs").textContent =
-          "Only for PS4 with Firmware 5.05 to 13.52";
-    });
-} else {
-    if (window.applicationCache.status == 0) {
-        if (fwNum == 5.05 || fwNum == 5.07) {
-            window.location.replace("cache505.html");
-        } else if (fwNum >= 7.00 && fwNum <= 8.52) {
-            window.location.replace("cache700.html");
-        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-            window.location.replace("cache900.html");
-        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-            window.location.replace("cachecss.html");
-        } else if (fwNum >= 11.50 && fwNum <= 13.52) {
-            window.location.replace("cacheslopkit.html");
-        } else {
-            document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("msgs").innerHTML =
-                  'Unsupported Firmware: <span style="color:red;">' +
-                  fwVersion + '</span>';
-            });
-        }
-    } else {
-        if (fwNum == 5.05 || fwNum == 5.07) {
-            var script = document.createElement("script");
-            script.src = "505/exploit.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
+        <div class="loading-decoration" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-        } else if (fwNum >= 7.00 && fwNum <= 8.52) {
-            var script = document.createElement("script");
-            script.type = "module";
-            script.src = "700/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
+        <div class="loading-caption">
+            GoldHEN Exploit Host
+        </div>
+    </div>
 
-        } else if (fwNum >= 9.00 && fwNum <= 9.60) {
-            var script = document.createElement("script");
-            script.type = "module";
-            script.src = "900/alert.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
+    <!-- SOCIAL MEDIA / CREDITS -->
+    <div class="design-credits">
 
-        } else if (fwNum >= 10.00 && fwNum <= 11.02) {
-            var script = document.createElement("script");
-            script.src = "css/main.js";
-            script.onerror = onScriptError;
-            script.onload = function () {
-                setTimeout(function () {
-                    doJb();
-                }, 500);
-            };
-            document.head.appendChild(script);
+        <div class="credits-header">
+            <div class="eyebrow">CREATIVE DESIGN</div>
+            <h2>Connect With Us</h2>
+            <div class="gold-line"></div>
+        </div>
 
-        } else if (fwNum >= 11.50 && fwNum <= 12.02) {
-            var script = document.createElement("script");
-            script.type = "module";
-            script.src = "slopkit/chain_lapse.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
+        <!-- ADAM CENTER -->
+        <div class="credit-card">
 
-        } else if (fwNum >= 12.50 && fwNum <= 13.00) {
-            var script = document.createElement("script");
-            script.type = "module";
-            script.src = "slopkit/chain_poops.js";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
+            <div class="credit-person">
+                <div class="person-icon">✦</div>
 
-        } else if (fwNum >= 13.02 && fwNum <= 13.52) {
-            var script = document.createElement("script");
-            script.type = "module";
-            script.src = "slopkit/jb.js?v=19";
-            script.onerror = onScriptError;
-            document.head.appendChild(script);
+                <div class="person-info">
+                    <h3>ADAM Center</h3>
+                    <p>OFFICIAL SOCIAL MEDIA</p>
+                </div>
+            </div>
 
-        } else {
-            document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("msgs").innerHTML =
-                  'Unsupported Firmware: <span style="color:red;">' +
-                  fwVersion + '</span>';
-            });
-        }
-    }
-}
-</script>
+            <div class="social-links">
 
-<h1>
-  PS4 5.0 - 13.52 FW GoldHEN by Ahmad Sirbel (ADAM Center)
-</h1>
+                <a class="social-link facebook"
+                   href="https://www.facebook.com/adamcenterjo/"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Facebook</strong>
+                        <span>ADAM Center</span>
+                    </div>
+                </a>
 
-<hr>
+                <a class="social-link instagram"
+                   href="https://www.instagram.com/adam_centerr/"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.3-3.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Instagram</strong>
+                        <span>ADAM Center</span>
+                    </div>
+                </a>
 
-<br>
+                <a class="social-link whatsapp"
+                   href="https://wa.me/962789506764"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.6 6L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4zM12.1 21.7c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.8 9.8 0 0 1-1.5-5.2 10.1 10.1 0 0 1 20.2 0c0 5.5-4.6 9.9-10.1 9.9zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.6.8.3 1.5.2 2 .1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>WhatsApp</strong>
+                        <span>Contact Us</span>
+                    </div>
+                </a>
 
-<h1 id="msgs" style="
-  font-size: 30px;
-  margin-top: 30px;
-  margin-bottom: 100px;
-">
-  Loading GoldHEN v2.4b18.12... Please Wait
-</h1>
+            </div>
+        </div>
 
-<!-- Social links section -->
-<div id="social-section" style="
-  display: block;
-  position: relative;
-  clear: both;
-  margin: 180px 30px 30px;
-  font-family: Arial, sans-serif;
-  font-size: 22px;
-  line-height: 1.9;
-">
+        <!-- AHMAD SIRBEL -->
+        <div class="credit-card">
 
-  <!-- Designed by -->
-  <div style="text-align: right; margin-bottom: 30px;">
-    <h2 style="
-      display: inline-block;
-      font-size: 36px;
-      padding: 8px 20px;
-      margin: 0;
-      color: #ffffff;
-      background: #222222;
-      border-radius: 8px;
-    ">
-      Designed by
-    </h2>
-  </div>
+            <div class="credit-person">
+                <div class="person-icon">✦</div>
 
-  <!-- ADAM Center -->
-  <div id="adam-center" style="
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    position: relative;
-    clear: both;
-    text-align: right;
-    margin-bottom: 35px;
-  ">
+                <div class="person-info">
+                    <h3>Ahmad Sirbel</h3>
+                    <p>WEB DESIGNER &amp; DEVELOPER</p>
+                </div>
+            </div>
 
-    <h3 style="
-      display: inline-block;
-      font-family: Georgia, serif;
-      font-size: 34px;
-      padding: 8px 20px;
-      margin: 0 0 15px 0;
-      color: #ffffff;
-      background: #222222;
-      border-radius: 8px;
-    ">
-      ADAM Center
-    </h3>
+            <div class="social-links">
 
-    <div style="text-align: right; direction: ltr;">
+                <a class="social-link facebook"
+                   href="https://www.facebook.com/ahmad.sirbel/"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Facebook</strong>
+                        <span>Ahmad Sirbel</span>
+                    </div>
+                </a>
 
-      <a href="https://www.facebook.com/adamcenterjo/"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           display: inline-block;
-           color: #ffffff;
-           background: #1877F2;
-           padding: 4px 10px;
-           margin: 3px;
-           border-radius: 6px;
-           text-decoration: none;
-         ">
-        Facebook
-      </a>
+                <a class="social-link instagram"
+                   href="https://www.instagram.com/ahmadsirbel/"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.3-3.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Instagram</strong>
+                        <span>Ahmad Sirbel</span>
+                    </div>
+                </a>
 
-      <a href="https://www.instagram.com/adam_centerr/"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           display: inline-block;
-           color: #ffffff;
-           background: #E4405F;
-           padding: 4px 10px;
-           margin: 3px;
-           border-radius: 6px;
-           text-decoration: none;
-         ">
-        Instagram
-      </a>
+                <a class="social-link whatsapp"
+                   href="https://wa.me/962789506764"
+                   target="_blank" rel="noopener noreferrer">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.6 6L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4zM12.1 21.7c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.8 9.8 0 0 1-1.5-5.2 10.1 10.1 0 0 1 20.2 0c0 5.5-4.6 9.9-10.1 9.9zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.6.8.3 1.5.2 2 .1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>WhatsApp</strong>
+                        <span>Contact Me</span>
+                    </div>
+                </a>
 
-      <a href="https://wa.me/962789506764"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           display: inline-block;
-           color: #ffffff;
-           background: #25D366;
-           padding: 4px 10px;
-           margin: 3px;
-           border-radius: 6px;
-           text-decoration: none;
-         ">
-        WhatsApp
-      </a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="credits-footer">
+            Crafted with passion by
+            <span>Ahmad Sirbel</span>
+            <br>
+            © ADAM Center — All Rights Reserved
+        </div>
 
     </div>
-  </div>
-
-  <!-- Ahmad Sirbel -->
-  <div id="ahmad-sirbel" style="
-    display: block;
-    visibility: visible;
-    opacity: 1;
-    position: relative;
-    clear: both;
-    text-align: right;
-    margin-top: 35px;
-    margin-bottom: 30px;
-    padding: 10px 0;
-  ">
-
-    <h3 style="
-      display: inline-block;
-      font-family: Georgia, serif;
-      font-size: 34px;
-      padding: 8px 20px;
-      margin: 0 0 15px 0;
-      color: #ffffff;
-      background: #222222;
-      border-radius: 8px;
-    ">
-      Ahmad Sirbel
-    </h3>
-
-    <div style="text-align: right; direction: ltr;">
-
-      <a href="https://www.facebook.com/ahmad.sirbel/"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           display: inline-block;
-           color: #ffffff;
-           background: #1877F2;
-           padding: 4px 10px;
-           margin: 3px;
-           border-radius: 6px;
-           text-decoration: none;
-         ">
-        Facebook
-      </a>
-
-      <a href="https://www.instagram.com/ahmadsirbel/"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           display: inline-block;
-           color: #ffffff;
-           background: #E4405F;
-           padding: 4px 10px;
-           margin: 3px;
-           border-radius: 6px;
-           text-decoration: none;
-         ">
-        Instagram
-      </a>
-
-      <a href="https://wa.me/962789506764"
-         target="_blank"
-         rel="noopener noreferrer"
-         style="
-           display: inline-block;
-           color: #ffffff;
-           background: #25D366;
-           padding: 4px 10px;
-           margin: 3px;
-           border-radius: 6px;
-           text-decoration: none;
-         ">
-        WhatsApp
-      </a>
-
-    </div>
-  </div>
-
-  <p style="
-    text-align: center;
-    font-size: 17px;
-    color: #777777;
-    margin-top: 30px;
-  ">
-    Designed by ِAhmad Sirbel.
-  </p>
-
-</div>
 
 </body>
 </html>
