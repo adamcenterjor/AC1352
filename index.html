@@ -1,132 +1,650 @@
+
 <!DOCTYPE html>
-<html><head>
-<title>PS4  Exploit Host by Ahmad Sirbel (ADAM Center)</title>
-<link rel="stylesheet" href="style.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PS4 Exploit Host by Ahmad Sirbel (ADAM Center)</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ===== PREMIUM GOLDHEN ROUND BUTTON ===== */
+
+        #menu {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        #menu > h1 {
+            font-size: 38px !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin: 25px 0 35px;
+            color: #ffe29a !important;
+            text-shadow:
+                0 0 8px rgba(255, 193, 64, 0.55),
+                0 0 22px rgba(255, 170, 0, 0.22);
+        }
+
+        .btn.btn-multi {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 220px;
+            height: 220px;
+            padding: 25px;
+            box-sizing: border-box;
+
+            border-radius: 50%;
+            border: 2px solid #d7b56d;
+
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    #41402f 0%,
+                    #22221e 38%,
+                    #101010 75%,
+                    #080808 100%
+                );
+
+            color: #ffe7ad;
+            font-family: Arial, sans-serif;
+            font-size: 19px;
+            font-weight: 800;
+            line-height: 1.5;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            cursor: pointer;
+            overflow: hidden;
+            isolation: isolate;
+
+            box-shadow:
+                0 0 0 7px rgba(215, 181, 109, 0.07),
+                0 0 20px rgba(215, 181, 109, 0.22),
+                inset 0 0 22px rgba(215, 181, 109, 0.10);
+
+            animation: goldhen-pulse 3s ease-in-out infinite;
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease,
+                color 0.35s ease;
+        }
+
+        /* الإطار الداخلي */
+        .btn.btn-multi::before {
+            content: "";
+            position: absolute;
+            inset: 7px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 226, 154, 0.45);
+            z-index: -1;
+            transition:
+                inset 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        /* اللمعة المتحركة */
+        .btn.btn-multi::after {
+            content: "";
+            position: absolute;
+            top: -45%;
+            left: -80%;
+            width: 45%;
+            height: 190%;
+            transform: rotate(28deg);
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 239, 190, 0.22),
+                rgba(255, 255, 255, 0.65),
+                rgba(255, 239, 190, 0.22),
+                transparent
+            );
+
+            pointer-events: none;
+            animation: goldhen-shine 4s ease-in-out infinite;
+        }
+
+        /* تأثير الماوس */
+        .btn.btn-multi:hover {
+            transform: translateY(-5px) scale(1.045);
+            color: #ffffff;
+            border-color: #fff0bd;
+
+            box-shadow:
+                0 0 0 9px rgba(215, 181, 109, 0.09),
+                0 0 30px rgba(255, 199, 77, 0.48),
+                0 0 65px rgba(255, 170, 0, 0.20),
+                inset 0 0 30px rgba(255, 218, 130, 0.16);
+        }
+
+        .btn.btn-multi:hover::before {
+            inset: 12px;
+            border-color: rgba(255, 226, 154, 0.8);
+        }
+
+        .btn.btn-multi:active {
+            transform: scale(0.97);
+        }
+
+        .btn.btn-multi:focus-visible {
+            outline: 3px solid #ffe29a;
+            outline-offset: 8px;
+        }
+
+        @keyframes goldhen-pulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 0 7px rgba(215, 181, 109, 0.06),
+                    0 0 20px rgba(215, 181, 109, 0.20),
+                    inset 0 0 22px rgba(215, 181, 109, 0.08);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 0 10px rgba(215, 181, 109, 0.09),
+                    0 0 32px rgba(255, 193, 64, 0.32),
+                    inset 0 0 28px rgba(215, 181, 109, 0.14);
+            }
+        }
+
+        @keyframes goldhen-shine {
+            0%, 25% {
+                left: -80%;
+            }
+
+            65%, 100% {
+                left: 140%;
+            }
+        }
+
+        /* ===== PREMIUM DESIGN CREDITS ===== */
+
+        .design-credits {
+            width: 100%;
+            margin: 55px 0 35px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            direction: ltr;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .design-credits * {
+            box-sizing: border-box;
+        }
+
+        .credits-header {
+            width: 100%;
+            max-width: 480px;
+            text-align: right;
+            margin: 0 0 -260px;
+        }
+
+        .credits-header .eyebrow {
+            color: #d4af65;
+            font-size: 11px;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        .credits-header h2 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .credits-header .gold-line {
+            width: 60px;
+            height: 3px;
+            margin: 13px 0 0 auto;
+            background: linear-gradient(90deg, #a77a30, #ffe4a1);
+            border-radius: 10px;
+        }
+
+        .credit-card {
+            width: 100%;
+            max-width: 480px;
+            margin: 0 0 18px auto;
+            padding: 15px;
+            background: linear-gradient(135deg, #191919, #252525);
+            border: 1px solid #393939;
+            border-radius: 13px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-3px);
+            border-color: #b99552;
+        }
+
+        .credit-person {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+
+        .person-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #42351e, #171717);
+            border: 1px solid #8f713d;
+            color: #e8c982;
+            font-size: 19px;
+        }
+
+        .person-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .person-info h3 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 5px;
+        }
+
+        .person-info p {
+            font-size: 10px;
+            color: #d4af65;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 7px;
+        }
+
+        .social-link {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 10px 5px;
+            border-radius: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            background: #303030;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            color: #ffffff;
+        }
+
+        .social-link .social-icon {
+            width: 29px;
+            height: 29px;
+            min-width: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: #ffffff;
+        }
+
+        .social-icon svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+        }
+
+        .facebook .social-icon {
+            background: #1877F2;
+        }
+
+        .instagram .social-icon {
+            background: linear-gradient(
+                45deg,
+                #feda75,
+                #fa7e1e,
+                #d62976,
+                #962fbf,
+                #4f5bd5
+            );
+        }
+
+        .whatsapp .social-icon {
+            background: #25D366;
+        }
+
+        .facebook:hover {
+            background: #18365a;
+        }
+
+        .instagram:hover {
+            background: #49263e;
+        }
+
+        .whatsapp:hover {
+            background: #174a32;
+        }
+
+        .social-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .social-text strong {
+            font-size: 9px;
+            font-weight: 500;
+            color: #bcbcbc;
+        }
+
+        .social-text span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #ffffff;
+            overflow-wrap: anywhere;
+        }
+
+        .credits-footer {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            color: #929292;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-top: 12px;
+        }
+
+        .credits-footer span {
+            color: #d4af65;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+
+        @media (max-width: 520px) {
+            #menu > h1 {
+                font-size: 29px !important;
+                letter-spacing: 1px;
+            }
+
+            .btn.btn-multi {
+                width: 185px;
+                height: 185px;
+                font-size: 16px;
+            }
+
+            .design-credits {
+                padding: 0 12px;
+                margin-top: 35px;
+            }
+
+            .credit-card {
+                max-width: 100%;
+                padding: 12px;
+            }
+
+            .credits-header h2 {
+                font-size: 26px;
+            }
+
+            .person-info h3 {
+                font-size: 17px;
+            }
+
+            .social-links {
+                gap: 5px;
+            }
+
+            .social-link {
+                padding: 9px 3px;
+            }
+
+            .social-text strong {
+                font-size: 8px;
+            }
+
+            .social-text span {
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn.btn-multi,
+            .btn.btn-multi::after {
+                animation: none;
+            }
+
+            .btn.btn-multi {
+                transition: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
 <script>
-var histlength=history.length;history.go(-histlength 2);
+    var histlength = history.length;
+    history.go(-histlength);
 </script>
-<h1 id=msgs>PS4  Exploit Host by Ahmad Sirbel (ADAM Center)</h1>
+
+<h1 id="msgs">PS4 Exploit Host by Ahmad Sirbel (ADAM Center)</h1>
+
 <hr>
 <br>
-<div id=menu>
-<h1 style="font-size: 50px;color: yellow;">Auto Loader GoldHEN</h1>
-<button class="btn btn-multi" onmouseover="msgs.innerHTML='PS4 GoldHEN Host for 5.05 and 7.00 to 13.52 FW - (Auto Exploit Selection)'" onmouseout="msgs.innerHTML='PS4  Exploit Host by Ahmad Sirbel (ADAM Center)'" onclick="location.replace('ACALL/index.html')"> GoldHEN Multi FW </button>
 
+<div id="menu">
 
+    <h1>Auto Loader GoldHEN</h1>
 
-
-
-<div style="
-  margin-top: 100px;
-  margin-left: 30px;
-  margin-right: 30px;
-  font-family: Arial, sans-serif;
-  font-size: 22px;
-  line-height: 1.9;
-">
-
-  <!-- Designed by -->
-  <div style="text-align: right; margin-bottom: 30px;">
-    <h2 style="
-      display: inline-block;
-      font-size: 36px;
-      padding: 8px 20px;
-      margin: 0;
-      color: #ffffff;
-      background: #222222;
-      border-radius: 8px;
-    ">
-      Designed by
-    </h2>
-  </div>
-
-  <!-- ADAM Center -->
-  <div style="text-align: right; margin-bottom: 30px;">
-
-    <h3 style="
-      display: inline-block;
-      font-family: Georgia, serif;
-      font-size: 34px;
-      padding: 8px 20px;
-      margin: 0 0 15px 0;
-      color: #ffffff;
-      background: #222222;
-      border-radius: 8px;
-    ">
-      ADAM Center
-    </h3>
-
-    <div style="text-align: right; direction: ltr;">
-
-      <a href="https://www.facebook.com/adamcenterjo/"
-         target="_blank" rel="noopener noreferrer"
-         style="display: inline-block; color: #ffffff; background: #1877F2; padding: 4px 10px; margin: 3px; border-radius: 6px; text-decoration: none;">
-        Facebook
-      </a>
-
-      <a href="https://www.instagram.com/adam_centerr/"
-         target="_blank" rel="noopener noreferrer"
-         style="display: inline-block; color: #ffffff; background: #E4405F; padding: 4px 10px; margin: 3px; border-radius: 6px; text-decoration: none;">
-        Instagram
-      </a>
-
-      <a href="https://wa.me/962789506764"
-         target="_blank" rel="noopener noreferrer"
-         style="display: inline-block; color: #ffffff; background: #25D366; padding: 4px 10px; margin: 3px; border-radius: 6px; text-decoration: none;">
-        WhatsApp
-      </a>
-
-    </div>
-  </div>
-
-  <!-- Ahmad Sirbel -->
-  <div style="text-align: right; margin-bottom: 30px;">
-
-    <h3 style="
-      display: inline-block;
-      font-family: Georgia, serif;
-      font-size: 34px;
-      padding: 8px 20px;
-      margin: 0 0 15px 0;
-      color: #ffffff;
-      background: #222222;
-      border-radius: 8px;
-    ">
-      Ahmad Sirbel
-    </h3>
-
-    <div style="text-align: right; direction: ltr;">
-
-      <a href="https://www.facebook.com/ahmad.sirbel/"
-         target="_blank" rel="noopener noreferrer"
-         style="display: inline-block; color: #ffffff; background: #1877F2; padding: 4px 10px; margin: 3px; border-radius: 6px; text-decoration: none;">
-        Facebook
-      </a>
-
-      <a href="https://www.instagram.com/ahmadsirbel/"
-         target="_blank" rel="noopener noreferrer"
-         style="display: inline-block; color: #ffffff; background: #E4405F; padding: 4px 10px; margin: 3px; border-radius: 6px; text-decoration: none;">
-        Instagram
-      </a>
-
-      <a href="https://wa.me/962789506764"
-         target="_blank" rel="noopener noreferrer"
-         style="display: inline-block; color: #ffffff; background: #25D366; padding: 4px 10px; margin: 3px; border-radius: 6px; text-decoration: none;">
-        WhatsApp
-      </a>
-
-    </div>
-  </div>
-
-  <p style="text-align: center; font-size: 17px; color: #777777; margin-top: 30px;">
-    Designed by ِAhmad Sirbel.
-  </p>
+    <button
+        type="button"
+        class="btn btn-multi"
+        onmouseover="document.getElementById('msgs').innerHTML='PS4 GoldHEN Host for 5.05 and 7.00 to 13.52 FW - (Auto Exploit Selection)'"
+        onmouseout="document.getElementById('msgs').innerHTML='PS4 Exploit Host by Ahmad Sirbel (ADAM Center)'"
+        onclick="location.replace('ACALL/index.html')"
+    >
+        GoldHEN<br>
+        Multi FW
+    </button>
 
 </div>
 
+<div style="
+    margin-top: 100px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    line-height: 1.9;
+">
 
-</script>
+    <div class="design-credits">
+
+        <!-- MAIN TITLE -->
+        <div class="credits-header">
+            <div class="eyebrow">CREATIVE DESIGN</div>
+            <h2></h2>
+            <div class="gold-line"></div>
+        </div>
+
+        <!-- ADAM CENTER -->
+        <div class="credit-card">
+
+            <div class="credit-person">
+                <div class="person-icon">✦</div>
+
+                <div class="person-info">
+                    <h3>ADAM Center</h3>
+                    <p>OFFICIAL SOCIAL MEDIA</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+
+                <a
+                    class="social-link facebook"
+                    href="https://www.facebook.com/adamcenterjo/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Facebook</strong>
+                        <span>ADAM Center</span>
+                    </div>
+                </a>
+
+                <a
+                    class="social-link instagram"
+                    href="https://www.instagram.com/adam_centerr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.3-3.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Instagram</strong>
+                        <span>ADAM Center</span>
+                    </div>
+                </a>
+
+                <a
+                    class="social-link whatsapp"
+                    href="https://wa.me/962789506764"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.6 6L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4zM12.1 21.7c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.8 9.8 0 0 1-1.5-5.2 10.1 10.1 0 0 1 20.2 0c0 5.5-4.6 9.9-10.1 9.9zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.6.8.3 1.5.2 2 .1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>WhatsApp</strong>
+                        <span>Contact Us</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- AHMAD SIRBEL -->
+        <div class="credit-card">
+
+            <div class="credit-person">
+                <div class="person-icon">✦</div>
+
+                <div class="person-info">
+                    <h3>Ahmad Sirbel</h3>
+                    <p>WEB DESIGNER &amp; DEVELOPER</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+
+                <a
+                    class="social-link facebook"
+                    href="https://www.facebook.com/ahmad.sirbel/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.5 1.6-1.5h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.3v3.2h2.8V21z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Facebook</strong>
+                        <span>Ahmad Sirbel</span>
+                    </div>
+                </a>
+
+                <a
+                    class="social-link instagram"
+                    href="https://www.instagram.com/ahmadsirbel/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.3-3.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>Instagram</strong>
+                        <span>Ahmad Sirbel</span>
+                    </div>
+                </a>
+
+                <a
+                    class="social-link whatsapp"
+                    href="https://wa.me/962789506764"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.2 1.6 6L0 24l6.4-1.7a11.9 11.9 0 0 0 5.7 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.5-8.4zM12.1 21.7c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.8 1 1-3.7-.3-.4a9.8 9.8 0 0 1-1.5-5.2 10.1 10.1 0 0 1 20.2 0c0 5.5-4.6 9.9-10.1 9.9zm5.5-7.5c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.9.6.8.3 1.5.2 2 .1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+                        </svg>
+                    </div>
+                    <div class="social-text">
+                        <strong>WhatsApp</strong>
+                        <span>Contact Me</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="credits-footer">
+            Crafted with passion by
+            <span>Ahmad Sirbel</span>
+            <br>
+            © ADAM Center — All Rights Reserved
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
